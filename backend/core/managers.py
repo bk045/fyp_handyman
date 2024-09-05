@@ -1,0 +1,119 @@
+from django.contrib.auth.base_user import BaseUserManager
+from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.hashers import make_password
+from django.contrib.auth import models
+from django.db import models
+
+from .choices import UserChoice
+
+class StaffManager(models.Manager):
+    def create(self, **kwargs):
+        kwargs["user_type"] = UserChoice.STAFF
+        kwargs["password"] = make_password(kwargs["password"])
+        return super().create(**kwargs)
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.user_type = UserChoice.STAFF
+            self.password = make_password(self.password)
+        return super().save(*args, **kwargs)
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        result = queryset.filter(user_type=UserChoice.STAFF)
+        return result
+class BusinessCatererManager(models.Manager):
+    def create(self, **kwargs):
+        kwargs["user_type"] = UserChoice.BUSINESS_CATERER
+        kwargs["password"] = make_password(kwargs["password"])
+        return super().create(**kwargs)
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.user_type = UserChoice.BUSINESS_CATERER
+            self.password = make_password(self.password)
+        return super().save(*args, **kwargs)
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        result = queryset.filter(user_type=UserChoice.BUSINESS_CATERER)
+        return result
+class BusinessManager(models.Manager):
+    def create(self, **kwargs):
+        kwargs["user_type"] = UserChoice.BUSINESS
+        kwargs["password"] = make_password(kwargs["password"])
+        return super().create(**kwargs)
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.user_type = UserChoice.BUSINESS
+            self.password = make_password(self.password)
+        return super().save(*args, **kwargs)
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        result = queryset.filter(user_type=UserChoice.BUSINESS)
+        return result
+class IndividualCatererManager(models.Manager):
+    def create(self, **kwargs):
+        kwargs["user_type"] = UserChoice.INDIVIDUAL_CATERER
+        kwargs["password"] = make_password(kwargs["password"])
+        return super().create(**kwargs)
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.user_type = UserChoice.INDIVIDUAL_CATERER
+            self.password = make_password(self.password)
+        return super().save(*args, **kwargs)
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        result = queryset.filter(user_type=UserChoice.INDIVIDUAL_CATERER)
+        return result
+class IndividualManager(models.Manager):
+    def create(self, **kwargs):
+        kwargs["user_type"] = UserChoice.INDIVIDUAL
+        kwargs["password"] = make_password(kwargs["password"])
+        return super().create(**kwargs)
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.user_type = UserChoice.INDIVIDUAL
+            self.password = make_password(self.password)
+        return super().save(*args, **kwargs)
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        result = queryset.filter(user_type=UserChoice.INDIVIDUAL)
+        return result
+    
+class AppUserManager(BaseUserManager):
+    """
+        Custom user model manager where email is the unique identifiers
+        for authentication instead of usernames.
+    """
+    def create_user(self, email, password, **extra_fields):
+        """
+            Create and save a User with the given email and password.
+        """
+        if not email:
+            raise ValueError(_('The Email must be set'))
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save()
+        return user
+    
+    def create_superuser(self, email, password, **extra_fields):
+        """
+        Create and save a SuperUser with the given email and password.
+        """
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('is_active', True)
+
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError(_('Superuser must have is_staff=True'))
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError(_('Superuser must have is_superuser=True'))
+        return self.create_user(email, password, **extra_fields)

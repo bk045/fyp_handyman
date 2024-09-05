@@ -1,0 +1,134 @@
+.nnav .nav-search{
+    margin-left: 8rem;
+}
+.search-container{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    justify-content: center;
+    border-bottom: 2px solid var(--color-secondary);
+}
+.search-container .contents{
+    margin-top: 2rem;
+    width: 80%;
+    margin-bottom: 2rem;
+}
+
+.nnav{
+    background: #fafafa;
+    width: 100%;
+    padding: 10px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    /* top:0px; */
+    border-bottom: 2px solid var(--color-secondary);
+}
+.nnav .logo{
+    height: 80px;
+}
+
+.nnav .profile-group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 5rem;
+    cursor: pointer;
+}
+.nnav .profile-group .p-pic{
+}
+.nnav .profile-group .p-name{
+    width: fit-content;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.nnav .btn-group{
+    /* width: 100%; */
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.nnav .btn-group .mybtn{
+    margin-left: 1rem;
+}
+.nnav ul{
+    width: 80%;
+    text-align: right;
+}
+
+.nnav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+    font-size: 16px;
+}
+
+.nnav ul li span{
+    color: var(--color-secondary-darker);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Sub Menu Starts ------------------------------------ */
+.sub-menu-wrap{
+    position: absolute;
+    z-index: 1111;
+    top: 110%;
+    right: 60px;
+    width: 250px;
+    background: rgba(222,114, 38, 0.5);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s;
+
+    /* text-align: left;
+    padding: 1rem; */
+}
+.open-menu{
+    max-height: 300px;
+}
+
+.nnav .sub-menu{
+    background: #fafafa;
+    padding: 20px;
+    margin: 2px;
+    text-align: left;
+}
+
+.nnav .sub-menu .user-info{
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 5px;
+    margin-bottom: 8px;
+}
+
+.nnav .sub-menu .user-info h3{
+    font-size: medium;
+    font-weight: 600;
+    margin: 0;
+}
+
+.nnav .sub-menu-link{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    cursor:pointer;
+}
+
+.nnav .sub-menu-link span{
+    width: 100%;
+    margin-left: 20px;
+}
+
+.nnav .sub-menu-link:hover span{
+    font-weight: 600;
+}
+.nnav .sub-menu-link .arrow-right{
+    transition: 0.5s;
+}
+
+.nnav .sub-menu-link:hover .arrow-right{
+    transform: translateX(5px);
+}
+/* Sub Menu Ends ------------------------------------ */

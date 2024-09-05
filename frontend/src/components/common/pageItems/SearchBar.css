@@ -1,0 +1,24 @@
+.search-bar{
+    padding: 0.5rem 1rem;
+    color: var(--color-headings);
+    border: 1px solid #ccc;
+    border-radius: 40px;
+    outline: 0;
+    font-size: 1.5rem;
+}
+::placeholder{
+    color: #cdcbd7;
+}
+.search-bar-group{
+    border: 2px solid var(--color-primary);
+    border-radius: 40px;
+    display: flex;
+}
+.search-bar-group .search-bar{
+    border: 0;
+    flex-grow: 1;
+    padding: 0.5rem 1rem;
+}
+.search-bar-group .mybtn{
+   margin: 2px;
+}

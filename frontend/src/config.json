@@ -1,0 +1,28 @@
+{
+"baseAPI": "http://127.0.0.1:8000/handyman/",
+"userAPI" : "http://127.0.0.1:8000/handyman/users/",
+"loginUserAPI": "http://127.0.0.1:8000/handyman/auth/jwt/create/",
+"authAPI": "http://127.0.0.1:8000/handyman/auth/users/",
+
+"requestsWithNameAPI": "http://127.0.0.1:8000/handyman/requests_with_name/",
+"iCustomerWithNameAPI": "http://127.0.0.1:8000/handyman/i_customer_with_name/",
+"iCatererWithNameAPI": "http://127.0.0.1:8000/handyman/i_caterer_with_name/",
+"bCatererWithNameAPI": "http://127.0.0.1:8000/handyman/b_caterer_with_name/",
+"bCustomerWithNameAPI": "http://127.0.0.1:8000/handyman/b_customer_with_name/",
+
+"allICustomerWithNameAPI": "http://127.0.0.1:8000/handyman/all_i_customer_with_name/",
+"allICatererWithNameAPI": "http://127.0.0.1:8000/handyman/all_i_caterer_with_name/",
+"allBCatererWithNameAPI": "http://127.0.0.1:8000/handyman/all_b_caterer_with_name/",
+"allBCustomerWithNameAPI": "http://127.0.0.1:8000/handyman/all_b_customer_with_name/",
+
+"activeICustomerWithNameAPI": "http://127.0.0.1:8000/handyman/active_i_customer_with_name/",
+"activeICatererWithNameAPI": "http://127.0.0.1:8000/handyman/active_i_caterer_with_name/",
+"activeBCatererWithNameAPI": "http://127.0.0.1:8000/handyman/active_b_caterer_with_name/",
+"activeBCustomerWithNameAPI": "http://127.0.0.1:8000/handyman/active_b_customer_with_name/",
+"userStatusAPI":"http://127.0.0.1:8000/authentication/check_user_status/",
+
+"appUserAPI": "http://127.0.0.1:8000/handyman/users/",
+"requestAPI":"http://127.0.0.1:8000/handyman/requests/",
+"serviceAPI":"http://127.0.0.1:8000/handyman/s-menu/",
+"businessAPI":"http://127.0.0.1:8000/handyman/business-t/"
+}

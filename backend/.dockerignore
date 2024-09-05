@@ -1,0 +1,14 @@
+/chat/__pycache__
+/chat/migrations
+/core/__pycache__
+/core/migrations
+/handyman/__pycache__
+/handyman/migrations
+/media/*
+/project/__pycache__
+/project/migrations
+/db.sqlite3
+/.git
+/.gitignore
+/Dockerfile
+/.dockerignore

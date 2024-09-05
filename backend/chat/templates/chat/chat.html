@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+    <style>
+      .leftside{
+          font-size: 16px;
+          color: blue;
+          margin-right : auto;
+          background : blue;
+          color : white;
+          border :1px solid black;
+          border-radius : 5px;
+          padding :5px;
+          overflow-wrap :break-word;
+          margin-bottom :2px;
+          box-shadow:0px 0px 5px orange;
+        }
+        .rightside{
+          box-shadow:0px 0px 5px orange;
+          border-radius : 5px;
+          margin-left:auto;
+          marginBottom :2px;
+          background :green;
+          color :white;
+          border :1px solid black;
+          borderRadius :10px;
+          padding :5px;
+          overflowWrap break-word;
+      }
+      .chat-container{
+        display:flex;
+        background-color:#F7F7F6;
+        flex-direction: column; 
+        width:500px; height:80vh; 
+        padding:20px;
+        border-radius:15px;
+        box-shadow:0px 0px 25px gray;
+        margin:2rem;
+      }
+      .text-input{
+        padding: 5px;
+        color: #343431;
+        outline: none;
+        border: solid 2px grey;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      .text-input::focus{
+        outline: none;
+        border: solid 1px orange;
+      }
+      .button{
+        padding: 15px;
+        border-radius: 0.5rem;
+        color:black;
+        background: #de7226;
+        font-size: 16px;
+        width:100px;
+        margin-left:20px
+      }
+      .user-label{
+        font-size:24px;
+        font-family:Arial;
+        font-weight:600;
+        color:#51525C;
+        margin-top:20px;
+      }
+    </style>
+  </head>
+  <body style="background:#ADD8E6">
+    <div style="  display: flex; flex-direction: column; align-items: center; overflow-y:scroll; height:80vh;">
+      <div class="user-label">{{u1_name}} with {{u2_name}}</div>
+        <div class="chat-container" id="all-texts" >
+        </div>
+    </div>
+    <form type="post" id="message-form" style="margin-top: 5px; display:flex; justify-content: center">
+        {% csrf_token %}
+        <input type="text" id="message" style="" class="text-input"/>
+        <input type="submit" value="Send" id="submit" class="button"/>
+      </form>
+    <script>
+    function updateLeftSide(ele){
+       ele.classList.add('leftside')
+      }
+      function updateRightSide(ele){
+        ele.classList.add('rightside')
+    }
+
+    function updateMessage(){
+        let me = document.getElementById("all-texts")
+         $.ajax({
+              type: "GET",
+              url: '{% url 'allmessages' rid=rid user_id=main_user %}',
+              success: function(data) {
+                  me.innerHTML = "";
+                  var arrayLength = data.length;
+                    for (var i = 0; i < arrayLength; i++) {
+                        if (data[i].user === {{main_user}}){
+                            me.innerHTML += `<div id=${ i }>${data[i].message}</div>`;
+                            var ele = document.getElementById(`${i}`)
+                            updateRightSide(ele)
+
+                        } else {
+                            me.innerHTML += `<div id=${i}>${data[i].message}</div>`;
+                            var ele = document.getElementById(`${i}`)
+                            updateLeftSide(ele)
+                        }
+                    }
+              },
+              error: function(xhr, status, error) {
+              }
+          });
+    }
+
+    $(document).ready(function(e) {
+        setInterval(updateMessage, 1000);
+        let me = document.getElementById("all-texts")
+
+        $('#message-form').on('submit',function(e){
+          e.preventDefault();
+        message = document.querySelector("#message").value
+          $.ajax({
+              type: "POST",
+              url: '{% url 'allmessages' rid=rid user_id=main_user %}',
+              data: {
+                message: message,
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+              },
+              success: function(data) {
+                  me.innerHTML = "";
+                  var arrayLength = data.length;
+                    for (var i = 0; i < arrayLength; i++) {
+                        if (data[i].user === {{main_user}}){
+                            me.innerHTML += `<div id=${ i }>${data[i].message}</div>`;
+                            var ele = document.getElementById(`${i}`)
+                            updateRightSide(ele)
+                        } else {
+                            me.innerHTML += `<div id=${i}>${data[i].message}</div>`;
+                            var ele = document.getElementById(`${i}`)
+                            updateLeftSide(ele)
+                        }
+                    }
+                    document.querySelector("#message").value = "";
+                    me.scrollIntoView(alignToTop=false);
+              },
+              error: function(xhr, status, error) {
+              }
+          });
+      });
+    });
+
+    function onClosing(){
+        $.ajax({
+              type: "GET",
+              url: '{% url 'updatelogin' %}',
+              success: function(data) {
+              },
+              error: function(xhr, status, error) {
+              }
+          });
+    }
+
+     window.onbeforeunload =  onClosing
+    </script>
+  </body>
+</html>

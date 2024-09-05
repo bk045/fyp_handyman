@@ -1,0 +1,107 @@
+.react-table-body table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    /* width: 100%; */
+  }
+  
+  .react-table-body table td, table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  /* #f2f2f2; */
+  .react-table-body table tr:nth-child(even){background-color: #f8e4d6;}
+  /* #ddd; */
+  .react-table-body table tr:hover {background-color: #9ec0f5;}
+  
+  .react-table-body table th, tfoot td{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: rgba(222,114, 38, 1);
+    color: white;
+  }
+
+  .react-table-body table th span{
+    display: inline-block;
+    margin-left: 4px;
+    margin-top: 4px;
+  }
+
+  .react-table-body{
+    overflow: auto;
+    border: solid 2px gainsboro;
+    padding: 0.5rem;
+  }
+  .g-search-bar{
+    /* color: rgba(33, 34, 91, 1); */
+    font-weight: 600;
+    color: rgba(33, 34, 91, 1);
+    margin: 1rem 0;
+  }
+  /* focus:text-gray-700 focus:bg-white focus:-border--color-primary focus:outline-none
+  px-3 py-1.5 text-2xl text-gray-700 bg-white
+  border-solid border-gray-300 rounded m-2 */
+  .g-search-bar input{
+    color: rgb(76, 75, 75);
+    border-radius: 4px;
+    font-weight: 500;
+    border:solid 1.5px gray;
+    padding: 4px 5px;
+  }
+  .g-search-bar input:focus{
+    border: rgba(222,114, 38, 1) solid 1.5px;
+    outline: none;
+  }
+
+  .c-search-bar{
+    color: whitesmoke;
+  }
+  .c-search-bar input{
+    color: rgb(76, 75, 75);
+    border-radius: 4px;
+    font-size: small;
+    padding: 4px 5px;
+  }
+  .c-search-bar input:focus{
+    border: rgb(18, 19, 54) solid 1.5px;
+    outline: none;
+  }
+  .footer-controle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .page-size{
+    margin: 1rem 0;
+  }
+  .page-size select{
+    margin: 1rem 0;
+    color: rgb(76, 75, 75);
+    border-radius: 4px;
+    font-weight: 500;
+    border:solid 1.5px gray;
+    padding: 4px 5px;
+  }
+  .page-size select:focus{
+    border: rgba(222,114, 38, 1) solid 1.5px;
+    outline: none;
+  }
+  .page-group{
+    margin: 0 0 1rem 0;
+  }
+  .page-group input{
+    color: rgb(76, 75, 75);
+    border-radius: 4px;
+    font-weight: 500;
+    border:solid 1.5px gray;
+    padding: 4px 5px;
+  }
+  .page-group input:focus{
+    border: rgba(222,114, 38, 1) solid 1.5px;
+    outline: none;
+  }
+  .btn-group{
+    width: 30rem;
+    display: flex;
+    justify-content: space-around;
+  }

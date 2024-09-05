@@ -1,0 +1,29 @@
+# version: "2.29.1"
+
+services:
+  database:
+    image: postgres:14.13-alpine3.20
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  backend:
+    build: ./backend/.
+    # command: python manage.py runserver 0.0.0.0:8000
+    # volumes:
+    #   - ./backend:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+  frontend:
+    build: ./frontend/.
+    command: npm start
+    # volumes:
+    #   - ./frontend:/code
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend

@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activate Account</title>
+   <style>
+    
+   </style>
+</head>
+<body>
+    <div className="form-body">
+        <div className='form-container'>
+                <h3>Acctivate Account</h3>
+                <div className="form-wrapper">
+                <form method='POST'>
+                    {% csrf_token %}
+                    Please click on the button to activate your account...
+                    <button type='submit' className={btnClass}>Activate Account</button>
+                </form>
+                </div>
+        </div>
+    </div>
+</body>
+</html>
